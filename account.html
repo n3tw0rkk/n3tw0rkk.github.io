@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N3tw0rk | Acc0unt</title>
+    <style>
+        /* Подключение шрифта */
+        @font-face {
+            font-family: 'CustomFont';
+            src: url('font.ttf') format('truetype');
+        }
+
+        /* Основные стили */
+        body {
+            background-color: #000000; /* Черный фон */
+            color: white;
+            font-family: 'CustomFont', Arial, sans-serif; /* Используем CustomFont */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Контейнер для боксов */
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        /* Анимация появления */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Стили для боксов */
+        .box {
+            background-color: #112240; /* Темно-синий цвет для боксов */
+            border-radius: 15px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .box h2 {
+            margin: 0 0 10px 0;
+            font-size: 1.2em;
+            color: #6473ff; /* Голубой цвет для заголовков */
+        }
+
+        .box p {
+            margin: 5px 0;
+            font-size: 1em;
+            color: #ccd6f6; /* Светло-серый цвет для текста */
+        }
+
+        /* Стили для кнопки */
+        .button {
+            background: linear-gradient(45deg, #0a192f, #6e64ff, #ffffff, #0a192f);
+            background-size: 300% 300%;
+            border: none;
+            border-radius: 10px;
+            color: #0a192f; /* Темно-синий цвет текста */
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-position 3s ease, transform 0.3s ease;
+            animation: gradientShift 5s infinite alternate;
+            font-family: 'CustomFont', Arial, sans-serif; /* Используем CustomFont */
+        }
+
+        .button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Анимация градиента для кнопки */
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Бокс с именем -->
+        <div class="box">
+            <h2>Name</h2>
+            <p>miqyz</p>
+        </div>
+
+        <!-- Бокс с HWID -->
+        <div class="box">
+            <h2>HWID</h2>
+            <p>1234-5678-9101</p>
+        </div>
+
+        <!-- Бокс с подпиской -->
+        <div class="box">
+            <h2>Подписка активна до:</h2>
+            <p>31.12.3333</p>
+        </div>
+
+        <!-- Бокс с промокодом -->
+        <div class="box">
+            <h2>Ваш промо:</h2>
+            <p>miqyz</p>
+        </div>
+
+        <!-- Кнопка -->
+        <button class="button" onclick="alert('Эта кнопка должна что-то делать... tg : ntwrkclient')">Проверить статус</button>
+    </div>
+
+</body>
+</html>
