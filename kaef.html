@@ -1,210 +1,257 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <link href="style.css" type="text/css" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>zn3tw0rk | Registration</title>
+    <title>N3tw0rk | Acc0unt</title>
     <style>
+        /* Подключение шрифта */
         @font-face {
             font-family: 'CustomFont';
             src: url('font.ttf') format('truetype');
         }
 
+        /* Основные стили */
         body {
-            background-color: black;
+            background-color: #000000; /* Черный фон */
+            color: white;
+            font-family: 'CustomFont', Arial, sans-serif; /* Используем CustomFont */
+            margin: 0;
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
-            color: white;
-            font-family: 'CustomFont', sans-serif;
+            overflow: hidden;
+        }
+
+        /* Контейнер для боксов */
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease-out forwards;
         }
 
         /* Анимация появления */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
+        @keyframes fadeInUp {
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        .container {
-            text-align: center;
-            background-color: #222;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-            opacity: 0;
-            animation: fadeIn 1s ease-out forwards;
-            animation-delay: 0.5s; /* Задержка для контейнера */
+        /* Стили для боксов */
+        .box {
+            background-color: #112240; /* Темно-синий цвет для боксов */
+            border-radius: 15px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        h1 {
-            margin-bottom: 20px;
-            opacity: 0;
-            animation: fadeIn 1s ease-out forwards;
-            animation-delay: 1s; /* Задержка для заголовка */
+        .box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
 
-        input[type="text"],
-        input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: none;
-            border-radius: 5px;
-            background: #333;
-            color: white;
-            opacity: 0;
-            animation: fadeIn 1s ease-out forwards;
-            animation-delay: 1.5s; /* Задержка для полей ввода */
+        .box h2 {
+            margin: 0 0 10px 0;
+            font-size: 1.2em;
+            color: #6473ff; /* Голубой цвет для заголовков */
         }
 
+        .box p {
+            margin: 5px 0;
+            font-size: 1em;
+            color: #ccd6f6; /* Светло-серый цвет для текста */
+        }
+
+        /* Стили для кнопки */
         .button {
-            min-width: 120px;
-            position: relative;
+            background: linear-gradient(45deg, #0a192f, #6e64ff, #ffffff, #0a192f);
+            background-size: 300% 300%;
+            border: none;
+            border-radius: 10px;
+            color: #0a192f; /* Темно-синий цвет текста */
+            padding: 10px 20px;
+            font-size: 1em;
             cursor: pointer;
-            padding: 12px 17px;
-            border: 0;
-            border-radius: 7px;
-            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-            background: radial-gradient(
-                ellipse at bottom,
-                rgba(71, 81, 92, 1) 0%,
-                rgba(11, 21, 30, 1) 45%
-            );
-            color: rgba(255, 255, 255, 0.66);
-            transition: all 1s cubic-bezier(0.15, 0.83, 0.66, 1);
-            font-family: inherit;
-            font-size: 18px;
+            transition: background-position 3s ease, transform 0.3s ease;
+            animation: gradientShift 5s infinite alternate;
+            font-family: 'CustomFont', Arial, sans-serif; /* Используем CustomFont */
+        }
+
+        .button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Анимация градиента для кнопки */
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Стили для формы */
+        .form {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-            opacity: 0;
-            animation: fadeIn 1s ease-out forwards;
-            animation-delay: 2s; /* Задержка для кнопки */
+            flex-direction: column;
+            gap: 10px;
         }
 
-        .button::before {
-            content: "";
-            width: 70%;
-            height: 1px;
-            position: absolute;
-            bottom: 0;
-            left: 15%;
-            background: rgb(255, 255, 255);
-            background: linear-gradient(
-                90deg,
-                rgba(255, 255, 255, 0) 0%,
-                rgba(255, 255, 255, 1) 50%,
-                rgba(255, 255, 255, 0) 100%
-            );
-            opacity: 0.2;
-            transition: all 1s cubic-bezier(0.15, 0.83, 0.66, 1);
+        .form input {
+            background-color: #112240;
+            border: none;
+            border-radius: 10px;
+            padding: 10px;
+            color: #ccd6f6;
+            font-family: 'CustomFont', Arial, sans-serif;
         }
 
-        .button:hover {
-            color: rgb(255, 255, 255, 1);
-            transform: scale(1.1) translateY(-3px);
+        .form input::placeholder {
+            color: #6473ff;
         }
 
-        .button:hover::before {
-            opacity: 1;
+        .form button {
+            margin-top: 10px;
         }
 
-        .button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .button:active {
-            transform: scale(0.95);
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-        }
-
+        /* Стили для переключения форм */
         .toggle-links {
+            text-align: center;
             margin-top: 20px;
-            opacity: 0;
-            animation: fadeIn 1s ease-out forwards;
-            animation-delay: 2.5s; /* Задержка для текста переключения */
         }
 
         .toggle-links a {
-            color: #5800cc;
+            color: #6473ff;
             text-decoration: none;
         }
 
-        .home-button {
+        .toggle-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Стили для checkbox */
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .checkbox-container input[type="checkbox"] {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid #6473ff;
+            border-radius: 5px;
+            background-color: transparent;
+            cursor: pointer;
+            position: relative;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .checkbox-container input[type="checkbox"]:checked {
+            background-color: #6473ff;
+            border-color: #6473ff;
+        }
+
+        .checkbox-container input[type="checkbox"]:checked::after {
+            content: "✔";
             position: absolute;
-            top: 20px;
-            left: 20px;
-            opacity: 0;
-            animation: fadeIn 1s ease-out forwards;
-            animation-delay: 0.5s; /* Задержка для кнопки Home */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #0a192f;
+            font-size: 12px;
+        }
+
+        .checkbox-container label {
+            color: #ccd6f6;
+            font-size: 0.9em;
+        }
+
+        .checkbox-container label a {
+            color: #6473ff;
+            text-decoration: none;
+        }
+
+        .checkbox-container label a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
 
-<button class="home-button button" onclick="window.location.href='https://N3tw0rkk.github.io'">Home</button>
+    <div class="container">
+        <div id="registration-form" class="form">
+            <input type="text" placeholder="Nam3" id="name" required>
+            <input type="text" placeholder="Ema!l" id="email" required>
+            <input type="password" placeholder="Passw0rd" id="password" required>
+            
+            <!-- Checkbox с соглашением -->
+            <div class="checkbox-container">
+                <input type="checkbox" id="agree" required>
+                <label for="agree">
+                    Я принимаю <a href="https://github.com" target="_blank">лицензионное соглашение</a>
+                </label>
+            </div>
 
-<div class="container">
-    <h1 id="form-title">Reg!strat1on</h1>
-    
-    <div id="registration-form" class="form">
-        <input type="text" placeholder="Nam3" id="name" required>
-        <input type="text" placeholder="Ema!l" id="email" required>
-        <input type="password" placeholder="Passw0rd" id="password" required>
-        <button class="button" onclick="register()">Reg!ster</button>
+            <button class="button" onclick="register()">Reg!ster</button>
+        </div>
+        
+        <div id="login-form" class="form" style="display: none;">
+            <input type="text" placeholder="Ema!l" id="login-email" required>
+            <input type="password" placeholder="Passw0rd" id="login-password" required>
+            <button class="button" onclick="login()">L0g!n</button>
+        </div>
+        
+        <div class="toggle-links">
+            <span id="toggle-text">Already have an account? <a href="#" onclick="toggleForms()">L0g!n</a></span>
+        </div>
     </div>
-    
-    <div id="login-form" class="form" style="display: none;">
-        <input type="text" placeholder="Ema!l" id="login-email" required>
-        <input type="password" placeholder="Passw0rd" id="login-password" required>
-        <button class="button" onclick="login()">L0g!n</button>
-    </div>
-    
-    <div class="toggle-links">
-        <span id="toggle-text">Already have an account? <a href="#" onclick="toggleForms()">L0g!n</a></span>
-    </div>
-</div>
 
-<script>
-    function toggleForms() {
-        const registrationForm = document.getElementById('registration-form');
-        const loginForm = document.getElementById('login-form');
-        const formTitle = document.getElementById('form-title');
-        const toggleText = document.getElementById('toggle-text');
+    <script>
+        function toggleForms() {
+            const registrationForm = document.getElementById('registration-form');
+            const loginForm = document.getElementById('login-form');
+            const toggleText = document.getElementById('toggle-text');
 
-        if (registrationForm.style.display === 'none') {
-            registrationForm.style.display = 'block';
-            loginForm.style.display = 'none';
-            formTitle.textContent = 'n3tw0rk | R3g!straT10n';
-            toggleText.innerHTML = 'Already have an account? <a href="#" onclick="toggleForms()">Войти</a>';
-        } else {
-            registrationForm.style.display = 'none';
-            loginForm.style.display = 'block';
-            formTitle.textContent = 'Log!n';
-            toggleText.innerHTML = 'Dont have account? <a href="#" onclick="toggleForms()">Register</a>';
+            if (registrationForm.style.display === 'none') {
+                registrationForm.style.display = 'flex';
+                loginForm.style.display = 'none';
+                toggleText.innerHTML = 'Already have an account? <a href="#" onclick="toggleForms()">L0g!n</a>';
+            } else {
+                registrationForm.style.display = 'none';
+                loginForm.style.display = 'flex';
+                toggleText.innerHTML = 'Dont have account? <a href="#" onclick="toggleForms()">Register</a>';
+            }
         }
-    }
 
-    function register() {
-        alert("License Agreement | 1.1 - You have no right to leak client data, penalty: Blocking account by IP. | 1.2 - You must not be a funtime pioneer, a pregnant furry, an admin of any server (Exception: xvx server) and a Bi gay furry pioneer + funtime moderator or administrator, lmao. | 1.3 - If you do not agree with this, you are a moron.");
-        alert("Account registered! Check your email to confirm registration :3");
-    }
+        function register() {
+            const agreeCheckbox = document.getElementById('agree');
+            if (!agreeCheckbox.checked) {
+                alert("Вы должны принять лицензионное соглашение!");
+                return;
+            }
+            alert("License Agreement | 1.1 - You have no right to leak client data, penalty: Blocking account by IP. | 1.2 - You must not be a funtime pioneer, a pregnant furry, an admin of any server (Exception: xvx server) and a Bi gay furry pioneer + funtime moderator or administrator, lmao. | 1.3 - If you do not agree with this, you are a moron.");
+            alert("Account registered! Check your email to confirm registration :3");
+        }
 
-    function login() {
-        alert("You have logged into your account! :3");
-    }
-</script>
+        function login() {
+            alert("You have logged into your account! :3");
+        }
+    </script>
 
 </body>
 </html>
