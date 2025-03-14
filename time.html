@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N3tw0rkk Cl!ent | Coming Soon</title>
+    <style>
+        @font-face {
+            font-family: 'CustomFont';
+            src: url('font.ttf') format('truetype');
+        }
+
+        body {
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: white;
+            font-family: 'CustomFont', sans-serif;
+        }
+
+        /* Анимация появления */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Заголовок */
+        #header {
+            font-size: 3em;
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+            animation-delay: 0.5s;
+        }
+
+        /* Таймер */
+        #timer {
+            font-size: 4em;
+            display: flex;
+            gap: 40px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+            animation-delay: 1s;
+        }
+
+        #timer div {
+            text-align: center;
+        }
+
+        #timer span {
+            font-size: 0.5em;
+            color: #6473ff;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="header">N3tw0rkk Cl!ent Coming Soon...</h1>
+
+    <div id="timer">
+        <div>
+            <span id="days">00</span>
+            <span>Days</span>
+        </div>
+        <div>
+            <span id="hours">00</span>
+            <span>Hours</span>
+        </div>
+        <div>
+            <span id="minutes">00</span>
+            <span>Minutes</span>
+        </div>
+        <div>
+            <span id="seconds">00</span>
+            <span>Seconds</span>
+        </div>
+    </div>
+
+    <script>
+        // Установите конечную дату (100 дней с текущего момента)
+        const endDate = new Date();
+        endDate.setDate(endDate.getDate() + 100);
+
+        // Функция для обновления таймера
+        function updateTimer() {
+            const now = new Date();
+            const timeLeft = endDate - now;
+
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                document.getElementById('timer').innerHTML = "<div>N3TW0RKK CLIENT IS</div>";
+                return;
+            }
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        // Загрузите сохраненную дату из LocalStorage
+        const savedEndDate = localStorage.getItem('endDate');
+        if (savedEndDate) {
+            endDate.setTime(new Date(savedEndDate).getTime());
+        } else {
+            localStorage.setItem('endDate', endDate);
+        }
+
+        // Обновляйте таймер каждую секунду
+        const timerInterval = setInterval(updateTimer, 1000);
+        updateTimer(); // Инициализация таймера
+    </script>
+
+</body>
+</html>
