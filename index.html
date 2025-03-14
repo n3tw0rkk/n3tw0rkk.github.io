@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>N3tw0rk Cl!ent | H0M3</title>
+    <title>Network Client</title>
     <style>
         @font-face {
             font-family: 'CustomFont';
@@ -17,10 +17,11 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
             color: white;
             font-family: 'CustomFont', sans-serif;
+            overflow-y: auto; /* Добавлено для прокрутки */
         }
 
         /* Анимация появления */
@@ -46,16 +47,6 @@
             opacity: 0;
             animation: fadeIn 1s ease-out forwards;
             animation-delay: 0.5s; /* Задержка для иконки */
-        }
-
-        /* Кнопка в левом верхнем углу */
-        .top-left-button {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            opacity: 0;
-            animation: fadeIn 1s ease-out forwards;
-            animation-delay: 0.5s; /* Задержка для кнопки */
         }
 
         /* Заголовок */
@@ -162,6 +153,80 @@
             border-right: 2px solid white;
             display: inline-block;
         }
+
+        /* Стили для блока преимуществ */
+        .advantages {
+            margin-top: 50px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+            animation-delay: 3s; /* Задержка для блока преимуществ */
+        }
+
+        .advantage-box {
+            background-color: #112240;
+            border-radius: 15px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .advantage-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .advantage-box h2 {
+            margin: 0 0 10px 0;
+            font-size: 1.2em;
+            color: #6473ff;
+        }
+
+        .advantage-box p {
+            margin: 5px 0;
+            font-size: 1em;
+            color: #ccd6f6;
+        }
+
+        /* Стили для статистики */
+        .stats {
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+            animation-delay: 3.5s; /* Задержка для статистики */
+        }
+
+        .stat-box {
+            text-align: center;
+        }
+
+        .stat-box h2 {
+            font-size: 2em;
+            color: #6473ff;
+            margin: 0;
+        }
+
+        .stat-box p {
+            font-size: 1em;
+            color: #ccd6f6;
+            margin: 5px 0;
+        }
+
+        /* Кнопка обратного отсчета */
+        .countdown-button {
+            margin-top: 40px; /* Отступ сверху */
+            margin-bottom: 20px; /* Отступ снизу */
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+            animation-delay: 4s; /* Задержка для кнопки */
+        }
     </style>
 </head>
 <body>
@@ -176,6 +241,55 @@
     </div>
 
     <div id="scriptText" class="script-text">loadstring</div>
+
+    <!-- Блок преимуществ -->
+    <div class="advantages">
+        <div class="advantage-box">
+            <h2>Красивый внешний вид</h2>
+            <p>В нашем клиенте присутствует большое количество визуальных функций, которые сделают вашу игру более красочной. А так же вы можете настроить оформление клиента под себя, сделав его по настоящему красивым.</p>
+        </div>
+        <div class="advantage-box">
+            <h2>Настраиваемость</h2>
+            <p>В нашем клиенте вы можете настроить практически любую функцию под себя, а так же использовать конфигурации других пользователей. Благодаря этому вы сможете использовать наш клиент на максимуме его возможностей.</p>
+        </div>
+        <div class="advantage-box">
+            <h2>Оптимизация</h2>
+            <p>Мы постоянно улучшаем оптимизацию нашего клиента и самой игры. Благодаря этому вы сможете запустить наш клиент даже на слабых компьютерах.</p>
+        </div>
+        <div class="advantage-box">
+            <h2>Частые обновления</h2>
+            <p>Мы регулярно обновляем функционал в нашем клиенте, добавляя новые функции, а так же совершенствуя уже существующие. Благодаря этому наш клиент имеет преимущества под все существующие сервера.</p>
+        </div>
+        <div class="advantage-box">
+            <h2>Лучшая поддержка</h2>
+            <p>У нас самая лучшая поддержка, которая разбирается в своём деле и сможет помочь вам по любому вопросу связанному с нашим клиентом.</p>
+        </div>
+    </div>
+
+    <!-- Блок статистики -->
+    <div class="stats">
+        <div class="stat-box">
+            <h2>-</h2>
+            <p>Пользователей</p>
+        </div>
+        <div class="stat-box">
+            <h2>-</h2>
+            <p>Запусков клиента</p>
+        </div>
+        <div class="stat-box">
+            <h2>-</h2>
+            <p>Обновлений вышло</p>
+        </div>
+        <div class="stat-box">
+            <h2>-</h2>
+            <p>Дней с открытия</p>
+        </div>
+    </div>
+
+    <!-- Кнопка обратного отсчета -->
+    <div class="countdown-button">
+        <button class="button-85" onclick="window.location.href='time.html'">Обратный отсчет до открытия...</button>
+    </div>
 
     <div class="footer-text">We are on telegram | ➤ ntwrkclient.t.me</div>
 
