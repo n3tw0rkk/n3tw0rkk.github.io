@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>N3tw0rkk Client | H0M3</title>
+    <title>N3tw0rkk Cl!ent | H0M3</title>
+    <!-- Подключение Font Awesome для иконки Discord -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         @font-face {
             font-family: 'CustomFont';
@@ -22,6 +24,7 @@
             color: white;
             font-family: 'CustomFont', sans-serif;
             overflow-y: auto; /* Добавлено для прокрутки */
+            position: relative; /* Для позиционирования кнопки Discord */
         }
 
         /* Анимация появления */
@@ -227,6 +230,53 @@
             animation: fadeIn 1s ease-out forwards;
             animation-delay: 4s; /* Задержка для кнопки */
         }
+
+        /* Стили для кнопки Discord */
+        .discord-button {
+            background-color: #5865F2; /* Цвет Discord */
+            border: none;
+            border-radius: 10px;
+            color: white;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: absolute; /* Позиционирование */
+            bottom: 20px; /* Отступ снизу */
+            left: 20px; /* Отступ слева */
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards, pulse 2s infinite ease-in-out;
+            animation-delay: 4.5s; /* Задержка для кнопки Discord */
+        }
+
+        .discord-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .discord-button i {
+            font-size: 24px; /* Размер иконки */
+        }
+
+        /* Анимация пульсации */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                background-color: #5865F2;
+            }
+            50% {
+                transform: scale(1.05);
+                background-color: #7289DA; /* Более светлый оттенок */
+            }
+            100% {
+                transform: scale(1);
+                background-color: #5865F2;
+            }
+        }
     </style>
 </head>
 <body>
@@ -291,10 +341,15 @@
         <button class="button-85" onclick="window.location.href='time.html'">Обратный отсчет до открытия...</button>
     </div>
 
+    <!-- Кнопка Discord -->
+    <button class="discord-button" onclick="window.open('https://discord.gg/MHZ3Y3gr', '_blank')">
+        <i class="fab fa-discord"></i> <!-- Иконка Discord -->
+    </button>
+
     <div class="footer-text">We are on telegram | ➤ ntwrkclient.t.me</div>
 
     <script>
-        const text = "Network Client On Top";
+        const text = "N3tw0rkk Cl!ent On Top";
         const header = document.getElementById('header');
         let index = 0;
 
